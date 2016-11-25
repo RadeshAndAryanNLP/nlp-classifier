@@ -1,0 +1,30 @@
+{
+  "name": "nlp-classifier",
+  "version": "1.0.0",
+  "description": "An NLP classifier built for Queens College's CS 780 course, Natural Language Processing.  Uses Node.js and the Natural NPM module.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RadeshAndAryanNLP/nlp-classifier.git"
+  },
+  "keywords": [
+    "nlp",
+    "natural",
+    "language",
+    "processing",
+    "classifier",
+    "bayes"
+  ],
+  "author": "Aryan Jabbari <Aryan.Jabbari21@Qmail.cuny.edu>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RadeshAndAryanNLP/nlp-classifier/issues"
+  },
+  "homepage": "https://github.com/RadeshAndAryanNLP/nlp-classifier#readme",
+  "dependencies": {
+    "natural": "^0.4.0"
+  }
+}
