@@ -1,11 +1,11 @@
 'use strict';
 const fs = require('fs'),
-      readlineSync = require('readline-sync');
+    readlineSync = require('readline-sync');
 
 
 const concordancesDir = './concordances',
-      processedDir = './processed',
-      taggedDir = './tagged';
+    processedDir = './processed',
+    taggedDir = './tagged';
 
 /**
  * For each file in ./concordances, write a file in ./processed that contains no line numbers
@@ -28,17 +28,18 @@ function processConcordances() {
             let lines = data.split('\n');
             lines.forEach(function (line) {
               if (line.trim() === '') return; // if line is empty, continue to next line
-              let response;
-              line += '\t*** '; // add delimeter
 
-              let figurativeOrLiteral = ['figurative', 'literal'];
-              response = readlineSync.keyInSelect(figurativeOrLiteral, line + '\n', { guide: false });
+              let figurativeOrLiteral = ['figurative', 'literal', 'DELETE'];
+              let response = readlineSync.keyInSelect(figurativeOrLiteral, line + '\n', { guide: false });
 
-              line += figurativeOrLiteral[response];
-              line += '\n';
-              fs.appendFile(`${taggedDir}/${file}`, line, function (err) {
-                if (err) console.error(err.message);
-              });
+              if (response !== 2) { // 2 corresponds to delete; will not add to file
+                line += '\t*** '; // add delimeter
+                line += figurativeOrLiteral[response];
+                line += '\n';
+                fs.appendFile(`${taggedDir}/${file}`, line, function (err) {
+                  if (err) console.error(err.message);
+                });
+              }
             });
           });
         }
