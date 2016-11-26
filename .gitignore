@@ -1,5 +1,7 @@
 # JetBrains
 .idea
+# Apple files
+.DS_Store
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
