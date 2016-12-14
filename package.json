@@ -2,9 +2,9 @@
   "name": "nlp-classifier",
   "version": "1.0.0",
   "description": "An NLP classifier built for Queens College's CS 780 course, Natural Language Processing.  Uses Node.js and the Natural NPM module.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "save-traning-data": "node ./training-data/training-data-db.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/RadeshAndAryanNLP/nlp-classifier#readme",
   "dependencies": {
+    "mongoose": "^4.7.2",
     "natural": "^0.4.0",
     "readline-sync": "^1.4.5"
   }
