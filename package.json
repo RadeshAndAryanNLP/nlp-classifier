@@ -4,7 +4,7 @@
   "description": "An NLP classifier built for Queens College's CS 780 course, Natural Language Processing.  Uses Node.js and the Natural NPM module.",
   "main": "server.js",
   "scripts": {
-    "save-traning-data": "node ./training-data/training-data-db.js"
+    "save-data": "node ./data/data-to-db.js"
   },
   "repository": {
     "type": "git",
