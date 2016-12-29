@@ -77,6 +77,36 @@ exports.generateClassifierWithSurroundingPOSTags = function (callback) {
   });
 };
 
+/**
+ * Generates a classifier by adding the surrounding two words and their POS tags as features
+ */
+exports.generateClassifierWithSurroundingWordsAndPOSTags = function (callback) {
+  const classifier = new natural.BayesClassifier();
+  const tagger = new Tagger(lexiconFile, rulesFiles, defaultCategory, error => {
+    if (error) console.error(error.message);
+
+    Line.find({ dataType: 'training-data' }, { __v: 0, _id: 0, lineId: 0, updatedAt: 0, createdAt: 0 }, (err, lines) => {
+      if (err) console.error(err);
+
+      lines.forEach(line => {
+        const sentence = line.sentence,
+              language = line.languageType,
+              surroundingWords = extractWordsAroundPhrase(sentence),
+              surroundingTags = tagger.tag(surroundingWords.split(' '));
+        let tags = '';
+        surroundingTags.forEach(tag => {
+          tags += tag[1] + ' ';
+        });
+        tags = tags.trim();
+        const features = surroundingWords + ' ' + tags;
+        classifier.addDocument(features, language);
+      });
+
+      classifier.train();
+      callback(classifier);
+    });
+  });
+};
 
 /**
  * Generates a classifier by adding two words before and two words after phrase
