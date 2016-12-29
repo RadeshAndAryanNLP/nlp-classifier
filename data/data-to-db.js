@@ -35,12 +35,12 @@ function saveDataToDB (filePath, dataType) {
         });
     
         newLine.save(err => {
-          if (err) console.error(err);
+          if (err) console.error(err.message);
         });
       });
     });
   });
 }
 
-saveDataToDB('./data/training-data.txt', 'training-data');
-saveDataToDB('./data/dev-data.txt', 'dev-data');
+saveDataToDB('./data/lex-train-data.txt', 'training-data');
+saveDataToDB('./data/lex-dev-data.txt', 'dev-data');
